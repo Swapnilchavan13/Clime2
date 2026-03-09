@@ -12,8 +12,8 @@ const industries = [
 ];
 
 const clientLogos = [
-  "The Tamara Coorg", "The Legacy Mandwa", "Stone Hedge", "RARE", "Aashraya",
-  "The Machan", "Orah", "SAEL", "Sakhua", "FAR & BEYOND",
+  "The Tamara Coorg", "The Legacy Mandwa", "Stone Hedge", "RARE Circle", "Aashraya On the Ganga",
+  "The Machan", "Orah", "SAEL", "Sakhua", "FAR & BEYOND", "Symbiosys International University", "The Oasis" ,
 ];
 
 const caseStudies = [
@@ -88,7 +88,7 @@ const WhoUsesSection = () => {
           <p className="text-center text-sm text-muted-foreground font-medium uppercase tracking-wider mb-8">
             Trusted by Leading Organisations
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
             {clientLogos.map((name) => (
               <div
                 key={name}
