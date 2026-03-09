@@ -10,11 +10,14 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="section-container flex items-center justify-between h-16">
         <a href="/" className="flex items-center gap-2">
-          <CarbonAtom size={28} animate={false} />
+          {/* <CarbonAtom size={28} animate={false} />
           <span className="font-display font-bold text-xl text-foreground">
             Clime<span className="gradient-text">Sc</span>ore
-          </span>
+          </span> */}
+                  <img src="/ClimeScore.png" alt="logo" style={{ height: "40px" }} />
+                  <span className="font-display font-bold text-sm text-foreground">by<span className="gradient-text"> NettZero</span></span> 
         </a>
+       
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
@@ -25,8 +28,14 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
+          <a href="/clientlogin">
+
           <Button variant="ghost" size="sm">Log in</Button>
+          </a>
+
+          <a href="/clientlogin">
           <Button size="sm">Start Measuring</Button>
+          </a>
         </div>
 
         {/* Mobile */}

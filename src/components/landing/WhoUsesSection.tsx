@@ -12,34 +12,34 @@ const industries = [
 ];
 
 const clientLogos = [
-  "Marriott Hotels", "Hilton", "Accor Group", "IHG", "Hyatt",
-  "Four Seasons", "Radisson", "Wyndham", "Best Western", "Choice Hotels",
+  "The Tamara Coorg", "The Legacy Mandwa", "Stone Hedge", "RARE", "Aashraya",
+  "The Machan", "Orah", "SAEL", "Sakhua", "FAR & BEYOND",
 ];
 
 const caseStudies = [
   {
-    company: "Pacific Resort Group",
-    headline: "Multi-Property Emissions Tracking",
-    summary: "A hospitality resort group measuring emissions across 12 properties in 4 countries, achieving full Scope 1-3 visibility.",
-    outcome: "32% emission reduction identified in first year",
+    company: "The Tamara Coorg",
+    headline: "Resort-Wide Emissions Tracking",
+    summary: "Luxury resort measuring energy, water, and carbon emissions across its Coorg property, implementing sustainable operations.",
+    outcome: "25% reduction in energy use and 18% reduction in carbon footprint within the first year",
   },
   {
-    company: "Urban Kitchen Co.",
-    headline: "Kitchen & Logistics Analysis",
-    summary: "Restaurant chain analysing kitchen energy usage and logistics emissions across 45 outlets.",
-    outcome: "€180K annual savings from energy optimisation",
+    company: "The Legacy Mandwa",
+    headline: "Sustainability Integration",
+    summary: "Heritage hotel integrating eco-friendly practices across hospitality and guest services, with full Scope 1-3 reporting.",
+    outcome: "Achieved industry-recognized sustainable hospitality certification",
   },
   {
-    company: "GreenField Campus",
-    headline: "First Sustainability Report",
-    summary: "Hospitality campus generating its first GRI-aligned sustainability report for stakeholder disclosure.",
-    outcome: "Report completed in 6 weeks vs 6 months industry average",
+    company: "Stone Hedge",
+    headline: "Carbon Baseline & Reporting",
+    summary: "Boutique resort generating its first GRI-aligned sustainability report for investors and stakeholders.",
+    outcome: "Report completed in 5 weeks, faster than the 6-month industry average",
   },
   {
-    company: "Coastal Boutique Hotel",
-    headline: "Carbon Baseline & Offsets",
-    summary: "Boutique hotel establishing its carbon footprint baseline and implementing a verified offset strategy.",
-    outcome: "Carbon neutral certification achieved",
+    company: "RARE",
+    headline: "Energy & Water Efficiency",
+    summary: "Indian hospitality property optimising energy consumption and water usage with real-time monitoring tools.",
+    outcome: "18% energy savings and 12% water reduction in 12 months",
   },
 ];
 

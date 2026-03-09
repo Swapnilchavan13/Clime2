@@ -58,9 +58,11 @@ const HowItWorksSection = () => {
         </div>
 
         <div className="text-center">
+          <a href="/clientlogin">
           <Button variant="hero" size="lg">
             Start Your Carbon Assessment <ArrowRight className="ml-1" size={16} />
           </Button>
+          </a>
         </div>
       </div>
     </section>

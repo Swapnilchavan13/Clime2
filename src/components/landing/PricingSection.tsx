@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 const plans = [
   {
     name: "Starter",
-    price: "$99",
-    period: "/month",
+    price: "Free",
+    period: "",
     desc: "For single-property businesses starting their carbon journey.",
     features: [
       "1 property / location",
@@ -20,7 +21,7 @@ const plans = [
   },
   {
     name: "Professional",
-    price: "$299",
+    price: "$40",
     period: "/month",
     desc: "For multi-property organisations needing comprehensive reporting.",
     features: [
@@ -56,6 +57,8 @@ const plans = [
 ];
 
 const PricingSection = () => {
+    const [openPlan, setOpenPlan] = useState<string | null>(null);
+
   return (
     <section id="pricing" className="section-padding bg-muted/40">
       <div className="section-container">
@@ -108,16 +111,18 @@ const PricingSection = () => {
                 ))}
               </ul>
 
-              <Button
-                variant={plan.popular ? "hero" : "outline"}
-                className="w-full"
-                size="lg"
-              >
-                {plan.cta} <ArrowRight size={16} className="ml-1" />
-              </Button>
+             <Button
+  variant={plan.popular ? "hero" : "outline"}
+  className="w-full"
+  size="lg"
+  onClick={() => window.location.href = "/registration"} // simple redirection
+>
+  {plan.cta} <ArrowRight size={16} className="ml-1" />
+</Button>
             </motion.div>
           ))}
         </div>
+        
       </div>
     </section>
   );
