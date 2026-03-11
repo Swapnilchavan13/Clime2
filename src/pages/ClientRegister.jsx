@@ -124,14 +124,21 @@ cursor: acceptTerms ? "pointer":"not-allowed"
 }
 
 return(
+<>
+        <a href="/" className="flex items-center gap-2">
+        
+                  <img src="/ClimeScore.png" alt="logo" style={{ height: "40px" }} />
+                  <span className="font-display font-bold text-sm text-foreground">by<span className="gradient-text"> NettZero</span></span> 
+        </a>
 
+     
 <div style={containerStyle}>
 
 <div style={cardStyle}>
 
 <div style={{textAlign:"center",marginBottom:"10px"}}>
 <img src="/ClimeScore.png" alt="logo" style={{height:"45px"}}/>
-<h2 style={{margin:"5px 0",color:"#2f855a"}}>User Registration Page</h2>
+<h2 style={{margin:"5px 0",color:"#2f855a"}}>Client Registration Page</h2>
 </div>
 
 <p style={{fontSize:"13px",color:"#555",textAlign:"center",marginBottom:"20px"}}>
@@ -225,6 +232,7 @@ Register
 </div>
 
 </div>
+</>
 
 )
 
