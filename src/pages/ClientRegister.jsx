@@ -1,184 +1,231 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const ClientRegister = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [contactNumber, setContactNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [organization, setOrganization] = useState('');
-  const [sector, setSector] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [logoImg, setLogoImg] = useState(null);
-  const [logoImgPreview, setLogoImgPreview] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const navigate = useNavigate();
+export default function ClientRegister () {
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const [firstName,setFirstName]=useState('');
+const [lastName,setLastName]=useState('');
+const [contactNumber,setContactNumber]=useState('');
+const [email,setEmail]=useState('');
+const [organization,setOrganization]=useState('');
+const [sector,setSector]=useState('');
+const [website,setWebsite]=useState('');
+const [plan,setPlan]=useState('');
+const [password,setPassword]=useState('');
+const [confirmPassword,setConfirmPassword]=useState('');
+const [logoImg,setLogoImg]=useState(null);
+const [logoImgPreview,setLogoImgPreview]=useState(null);
+const [acceptTerms,setAcceptTerms]=useState(false);
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+const navigate = useNavigate();
 
-    const formData = new FormData();
-    formData.append('firstName', firstName);
-    formData.append('lastName', lastName);
-    formData.append('contactNumber', contactNumber);
-    formData.append('email', email);
-    formData.append('organization', organization);
-    formData.append('sector', sector);
-    formData.append('password', password);
-    formData.append('logoimg', logoImg);
+const handleSubmit = async(e)=>{
+e.preventDefault();
 
-    const response = await fetch('https://backend.climescore.com/addclient', {
-      method: 'POST',
-      body: formData,
-    });
+if(password!==confirmPassword){
+alert("Passwords do not match!");
+return;
+}
 
-    if (response.ok) {
-      alert('Registered successfully! Please log in with your contact number.');
+const formData=new FormData();
 
-      setFirstName('');
-      setLastName('');
-      setContactNumber('');
-      setEmail('');
-      setOrganization('');
-      setSector('');
-      setPassword('');
-      setConfirmPassword('');
-      setLogoImg(null);
-      setLogoImgPreview(null);
+formData.append('firstName',firstName);
+formData.append('lastName',lastName);
+formData.append('contactNumber',contactNumber);
+formData.append('email',email);
+formData.append('organization',organization);
+formData.append('sector',sector);
+formData.append('website',website);
+formData.append('plan',plan);
+formData.append('password',password);
+formData.append('logoimg',logoImg);
 
-      navigate('/client/login');
-    } else {
-      alert('Registration failed. Please try again.');
-    }
-  };
+const response=await fetch('https://backend.climescore.com/addclient',{
+method:'POST',
+body:formData
+});
 
-  const handleLogoChange = (e) => {
-    const file = e.target.files[0];
-    setLogoImg(file);
+if(response.ok){
+alert("Registered successfully!");
+navigate('/client/login');
+}else{
+alert("Registration failed.");
+}
+}
 
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setLogoImgPreview(reader.result);
-      reader.readAsDataURL(file);
-    }
-  };
+const handleLogoChange=(e)=>{
+const file=e.target.files[0];
+setLogoImg(file);
 
-  const inputStyle = {
-    width: "100%",
-    padding: "8px",
-    marginTop: "4px",
-    marginBottom: "12px",
-    border: "1px solid #ccc",
-    borderRadius: "4px"
-  };
+if(file){
+const reader=new FileReader();
+reader.onloadend=()=>setLogoImgPreview(reader.result);
+reader.readAsDataURL(file);
+}
+}
 
-  return (
-    <div style={{ maxWidth: "500px", margin: "40px auto", fontFamily: "Arial" }}>
-      <h2>Client Registration</h2>
-      <p>Note: Your <strong>Contact Number</strong> will be your login ID.</p>
+const containerStyle={
+display:"flex",
+justifyContent:"center",
+alignItems:"center",
+padding:"40px",
+background:"#f4f7f5",
+minHeight:"100vh",
+fontFamily:"Arial"
+}
 
-      <form onSubmit={handleSubmit}>
+const cardStyle={
+width:"520px",
+background:"#fff",
+padding:"35px",
+borderRadius:"10px",
+border:"2px solid #2f855a",
+boxShadow:"0 8px 20px rgba(0,0,0,0.08)"
+}
 
-        <label>First Name</label>
-        <input style={inputStyle} type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+const inputStyle={
+width:"100%",
+padding:"10px",
+marginTop:"5px",
+marginBottom:"15px",
+border:"1px solid #ccc",
+borderRadius:"6px",
+fontSize:"14px"
+}
 
-        <label>Last Name</label>
-        <input style={inputStyle} type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+const labelStyle={
+fontWeight:"600",
+fontSize:"14px"
+}
 
-        <label>Contact Number</label>
-        <input
-          style={inputStyle}
-          type="tel"
-          value={contactNumber}
-          placeholder="Enter 10-digit number"
-          onChange={(e) => {
-            const value = e.target.value.replace(/\D/g, "");
-            if (value.length <= 10) setContactNumber(value);
-          }}
-          maxLength="10"
-          required
-        />
+const planBox={
+flex:1,
+border:"1px solid #ccc",
+padding:"10px",
+borderRadius:"6px",
+cursor:"pointer",
+display:"flex",
+alignItems:"center",
+gap:"8px"
+}
 
-        <label>Email</label>
-        <input style={inputStyle} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+const buttonStyle={
+width:"100%",
+marginTop:"20px",
+padding:"12px",
+background: acceptTerms ? "#2f855a" : "#b5b5b5",
+color:"white",
+border:"none",
+borderRadius:"6px",
+fontSize:"16px",
+fontWeight:"600",
+cursor: acceptTerms ? "pointer":"not-allowed"
+}
 
-        <label>Organization Name</label>
-        <input style={inputStyle} type="text" value={organization} onChange={(e) => setOrganization(e.target.value)} required />
+return(
 
-        <label>Sector / Industry</label>
-        <select style={inputStyle} value={sector} onChange={(e) => setSector(e.target.value)} required>
-          <option value="">Select Sector</option>
-          <option value="IT">IT</option>
-          <option value="Manufacturing">Manufacturing</option>
-          <option value="Healthcare">Healthcare</option>
-          <option value="Finance">Finance</option>
-          <option value="Education">Education</option>
-          <option value="Other">Other</option>
-        </select>
+<div style={containerStyle}>
 
-        <label>Password</label>
-        <div style={{ display: "flex", gap: "10px", marginBottom: "12px" }}>
-          <input
-            style={{ ...inputStyle, marginBottom: 0 }}
-            type={showPassword ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="button" onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? "Hide" : "Show"}
-          </button>
-        </div>
+<div style={cardStyle}>
 
-        <label>Confirm Password</label>
-        <div style={{ display: "flex", gap: "10px", marginBottom: "12px" }}>
-          <input
-            style={{ ...inputStyle, marginBottom: 0 }}
-            type={showConfirmPassword ? "text" : "password"}
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-          <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-            {showConfirmPassword ? "Hide" : "Show"}
-          </button>
-        </div>
+<div style={{textAlign:"center",marginBottom:"10px"}}>
+<img src="/ClimeScore.png" alt="logo" style={{height:"45px"}}/>
+<h2 style={{margin:"5px 0",color:"#2f855a"}}>User Registration Page</h2>
+</div>
 
-        <label>Logo Image</label>
-        <input type="file" accept="image/*" onChange={handleLogoChange} />
+<p style={{fontSize:"13px",color:"#555",textAlign:"center",marginBottom:"20px"}}>
+Contact Number will be used as your login ID.
+</p>
 
-        {logoImgPreview && (
-          <img
-            src={logoImgPreview}
-            alt="Logo Preview"
-            style={{ width: "120px", marginTop: "10px", display: "block" }}
-          />
-        )}
+<form onSubmit={handleSubmit}>
 
-        <button
-          type="submit"
-          style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            border: "none",
-            background: "#2f855a",
-            color: "white",
-            borderRadius: "4px",
-            cursor: "pointer"
-          }}
-        >
-          Register
-        </button>
+<label style={labelStyle}>First Name</label>
+<input style={inputStyle} type="text" value={firstName} onChange={(e)=>setFirstName(e.target.value)} required/>
 
-      </form>
-    </div>
-  );
+<label style={labelStyle}>Last Name</label>
+<input style={inputStyle} type="text" value={lastName} onChange={(e)=>setLastName(e.target.value)} required/>
+
+<label style={labelStyle}>Contact Number</label>
+<input style={inputStyle} type="tel" value={contactNumber} onChange={(e)=>setContactNumber(e.target.value)} required/>
+
+<label style={labelStyle}>Email</label>
+<input style={inputStyle} type="email" value={email} onChange={(e)=>setEmail(e.target.value)} required/>
+
+<label style={labelStyle}>Organization Name</label>
+<input style={inputStyle} type="text" value={organization} onChange={(e)=>setOrganization(e.target.value)} required/>
+
+<label style={labelStyle}>Website Address</label>
+<input style={inputStyle} type="url" value={website} onChange={(e)=>setWebsite(e.target.value)} required/>
+
+<label style={labelStyle}>Sector</label>
+<select style={inputStyle} value={sector} onChange={(e)=>setSector(e.target.value)} required>
+<option value="">Select Sector</option>
+<option>IT</option>
+<option>Manufacturing</option>
+<option>Healthcare</option>
+<option>Finance</option>
+<option>Education</option>
+<option>Other</option>
+</select>
+
+<label style={labelStyle}>Select Plan</label>
+
+<div style={{display:"flex",gap:"10px",marginBottom:"15px"}}>
+
+<label style={planBox}>
+<input type="radio" name="plan" value="Basic" onChange={(e)=>setPlan(e.target.value)} required/>
+Basic
+</label>
+
+<label style={planBox}>
+<input type="radio" name="plan" value="Professional" onChange={(e)=>setPlan(e.target.value)}/>
+Professional
+</label>
+
+<label style={planBox}>
+<input type="radio" name="plan" value="Enterprise" onChange={(e)=>setPlan(e.target.value)}/>
+Enterprise
+</label>
+
+</div>
+
+<label style={labelStyle}>Password</label>
+<input style={inputStyle} type="password" value={password} onChange={(e)=>setPassword(e.target.value)} required/>
+
+<label style={labelStyle}>Confirm Password</label>
+<input style={inputStyle} type="password" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} required/>
+
+<label style={labelStyle}>Upload Logo</label>
+<input style={{marginBottom:"15px"}} type="file" onChange={handleLogoChange}/>
+
+{logoImgPreview && (
+<img src={logoImgPreview} alt="preview" style={{width:"100px",borderRadius:"6px",marginBottom:"10px"}}/>
+)}
+
+<div style={{display:"flex",gap:"8px",fontSize:"13px",marginTop:"10px"}}>
+
+<input type="checkbox" checked={acceptTerms} onChange={(e)=>setAcceptTerms(e.target.checked)}/>
+
+<span>
+I accept the terms and conditions as per the{" "}
+<a href="/agreement" target="_blank" rel="noopener noreferrer" style={{color:"#2f855a",fontWeight:"600"}}>
+Agreement for use of ClimeScore platform
+</a>
+</span>
+
+</div>
+
+<button disabled={!acceptTerms} style={buttonStyle}>
+Register
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+)
+
 };
