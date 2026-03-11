@@ -57,7 +57,32 @@ const plans = [
 ];
 
 const PricingSection = () => {
+  const [openForm, setOpenForm] = useState(false);
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [org, setOrg] = useState("");
+const [comment, setComment] = useState("");
     const [openPlan, setOpenPlan] = useState<string | null>(null);
+
+    const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const subject = encodeURIComponent("Enterprise Plan Inquiry");
+
+  const body = encodeURIComponent(
+`Name: ${name}
+Organization: ${org}
+Email: ${email}
+Comment: ${comment}`
+  );
+
+  const gmailLink =
+    `https://mail.google.com/mail/?view=cm&fs=1&to=gautam@nettzero.world&su=${subject}&body=${body}`;
+
+  window.open(gmailLink, "_blank");
+
+  setOpenForm(false);
+};
 
   return (
     <section id="pricing" className="section-padding bg-muted/40">
@@ -115,14 +140,79 @@ const PricingSection = () => {
   variant={plan.popular ? "hero" : "outline"}
   className="w-full"
   size="lg"
-  onClick={() => window.location.href = "/registration"} // simple redirection
+  onClick={() => {
+    if (plan.name === "Enterprise") {
+      setOpenForm(true);
+    } else {
+      window.location.href = "/registration";
+    }
+  }}
 >
   {plan.cta} <ArrowRight size={16} className="ml-1" />
 </Button>
             </motion.div>
           ))}
         </div>
-        
+        {openForm && (
+  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div className="bg-white rounded-xl p-6 w-full max-w-md">
+      <h3 className="text-xl font-semibold mb-4">Contact Sales</h3>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+
+        <input
+          type="text"
+          placeholder="Your Name"
+          required
+          className="w-full border rounded-lg p-2"
+          value={name}
+          onChange={(e)=>setName(e.target.value)}
+        />
+
+        <input
+          type="text"
+          placeholder="Organization"
+          className="w-full border rounded-lg p-2"
+          value={org}
+          onChange={(e)=>setOrg(e.target.value)}
+        />
+
+        <input
+          type="email"
+          placeholder="Email"
+          required
+          className="w-full border rounded-lg p-2"
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
+        />
+
+        <textarea
+          placeholder="Comment"
+          className="w-full border rounded-lg p-2"
+          // rows="3"
+          value={comment}
+          onChange={(e)=>setComment(e.target.value)}
+        />
+
+        <div className="flex gap-3 pt-2">
+          <Button type="submit" className="w-full">
+            Send Email
+          </Button>
+
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={()=>setOpenForm(false)}
+          >
+            Cancel
+          </Button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+)}
       </div>
     </section>
   );

@@ -13,7 +13,7 @@ const industries = [
 
 const clientLogos = [
   "The Tamara Coorg", "The Legacy Mandwa", "Stone Hedge", "RARE Circle", "Aashraya On the Ganga",
-  "The Machan", "Orah", "SAEL", "Sakhua", "FAR & BEYOND", "Symbiosys International University", "The Oasis" ,
+  "The Machan", "Orah", "SAEL", "Sakhua", "FAR & BEYOND", "Symbiosis College of Arts & Commerce", "THE OASIS" ,
 ];
 
 const caseStudies = [

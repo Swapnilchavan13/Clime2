@@ -37,9 +37,14 @@ const CarbonCreditsSection = () => {
               ))}
             </div>
 
-            <Button variant="hero" size="lg">
-              Explore Carbon Credits <ArrowUpRight size={16} className="ml-1" />
-            </Button>
+           <Button
+  variant="hero"
+  size="lg"
+  onClick={() => window.open("https://climegrove.com/", "_blank")}
+>
+  Explore Carbon Credits
+  <ArrowUpRight size={16} className="ml-1" />
+</Button>
           </motion.div>
 
           <motion.div
