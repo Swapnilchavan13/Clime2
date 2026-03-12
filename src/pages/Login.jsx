@@ -2,9 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
-    const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+ const isTablet = screenWidth <= 1024 && screenWidth > 768;
+const isMobile = screenWidth <= 768;
 
   const slides = [
     {
@@ -44,175 +54,191 @@ export default function Login() {
     <div>
 
       {/* NAVBAR */}
-    
-<Link to="/" className="flex items-center gap-2">
-  <img src="/ClimeScore.png" alt="logo" className="h-10" />
-  <span className="font-display font-bold text-sm text-foreground">by <span className="gradient-text">NettZero</span></span>
-</Link>
+      <Link to="/" className="flex items-center gap-2">
+        <img src="/ClimeScore.png" alt="logo" style={{ height: "40px" }} />
+        <span style={{ fontWeight: "bold", fontSize: "14px" }}>
+          by <span style={{ color: "#0F9766" }}>NettZero</span>
+        </span>
+      </Link>
 
       {/* MAIN SECTION */}
       <div style={{ position: "relative" }}>
 
-        {/* BACKGROUND IMAGE */}
+        {/* MAIN CONTAINER */}
         <div
-    style={{
-      width: "90%",
-      height: "90vh",
-      margin: "auto",
-      border: "4px solid #0F9766", // green border
-      borderRadius: "20px",
-      position: "relative",
-      overflow: "hidden", // ensures content stays inside rounded corners
-    }}
-  >
-
-        {/* LOGIN ROW - TOP RIGHT */}
-        <div
-          style={{
-            position: "absolute",
-            top: "30px",
-            right: "80px",
-            display: "flex",
-            gap: "10px",
-            alignItems: "center",
-            background: "rgba(242, 249, 239, 0.9)",
-            padding: "10px 15px",
-             borderRadius: "10px",
-          }}
+        style={{
+  width: isMobile ? "95%" : isTablet ? "92%" : "90%",
+  height: isMobile ? "85vh" : "90vh",
+  margin: "auto",
+  border: "4px solid #0F9766",
+  borderRadius: "20px",
+  position: "relative",
+  overflow: "hidden",
+}}
         >
-          <input
-            type="text"
-            placeholder="User ID"
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
-            style={{
-              padding: "8px",
-              width: "120px",
-            borderRadius: "10px",
 
-            }}
-          />
+          {/* LOGIN ROW */}
+          <div
+           style={{
+  position: "absolute",
+  top: "20px",
+  right: isMobile ? "10px" : isTablet ? "30px" : "60px",
+  display: "flex",
+  flexDirection: isMobile ? "column" : "row",
+  width: isMobile ? "90%" : isTablet ? "45%" : "30%",
+  gap: "10px",
+  alignItems: "center",
+  background: "rgba(242, 249, 239, 0.9)",
+  padding: "10px 15px",
+  borderRadius: "10px",
+}}
+          >
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{
-              padding: "8px",
-              width: "120px",
-               borderRadius: "10px",
-            }}
-          />
+            <input
+              type="text"
+              placeholder="User ID"
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
+             style={{
+  padding: "8px",
+  width: isMobile ? "100%" : isTablet ? "42%" : "40%",
+  borderRadius: "10px",
+}}
+            />
 
-          <button
-            onClick={handleLogin}
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+             style={{
+  padding: "8px",
+  width: isMobile ? "100%" : isTablet ? "42%" : "40%",
+  borderRadius: "10px",
+}}
+            />
+
+            <button
+              onClick={handleLogin}
+              style={{
+                padding: "8px 15px",
+                background: "#0F9766",
+                color: "white",
+                border: "none",
+                cursor: "pointer",
+                borderRadius: "10px",
+                width: isMobile ? "100%" : "auto",
+              }}
+            >
+              Login
+            </button>
+          </div>
+
+          {/* CENTER LOGO */}
+          <div
             style={{
-              padding: "8px 15px",
-              background: "#0F9766",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-               borderRadius: "10px",
+              position: "absolute",
+              top: isMobile ? "35%" : isTablet ? "30%" : "30%",
+              
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              background: "#f1f6f4",
+              padding: "10px",
+              borderRadius: "10px",
+              maxWidth: isMobile ? "250px" : "400px",
             }}
           >
-            Login
-          </button>
-        </div>
+            <img
+              style={{ width: "100%", height: "auto" }}
+              src="https://iili.io/KLQzN8x.png"
+              alt=""
+            />
+          </div>
 
-        {/* CENTER TEXT CONTENT */}
+          {/* TITLE */}
           <div
-          style={{
-            position: "absolute",
-            top: "30%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            textAlign: "center",
-            background: "#f1f6f4",
-            color: "white",
-            padding: "10px",
-            borderRadius: "10px",
-            maxWidth: "400px",
-          }}
-        >
-          <img     style={{ width: "100%", height: "auto" }} // scales image to fit div
- src="https://iili.io/KLQzN8x.png" alt="" />
+            style={{
+              position: "absolute",
+              top: isMobile ? "48%" : "57%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              color: "#0F9766",
+              padding: "10px",
+              borderRadius: "10px",
+              maxWidth: "650px",
+            }}
+          >
+            <h2
+              style={{
+                marginBottom: "10px",
+                fontSize: isMobile ? "12px" : "22px",
+              }}
+            >
+              {slides[currentSlide].text}
+            </h2>
           </div>
 
-        <div
-          style={{
-            position: "absolute",
-            top: "57%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            textAlign: "center",
-            // background: "#0F9766",
-            color: "#0F9766",
-            padding: "10px",
-            borderRadius: "10px",
-            maxWidth: "650px",
-          }}
-        >
-          <h2 style={{ marginBottom: "10px", fontSize:"22px" }}>{slides[currentSlide].text}</h2>
+          {/* SUB TEXT */}
+          <div
+            style={{
+              position: "absolute",
+              top: isMobile ? "60%" : "70%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              color: "#0F9766",
+              padding: "10px",
+              borderRadius: "10px",
+              maxWidth: "650px",
+            }}
+          >
+            <p
+              style={{
+                marginBottom: "20px",
+                fontSize: isMobile ? "12px" : "20px",
+              }}
+            >
+              {slides[currentSlide].sub}
+            </p>
           </div>
 
-           <div
-          style={{
-            position: "absolute",
-            top: "70%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            textAlign: "center",
-            // background: "#0F9766",
-            color: "#0F9766",
-            padding: "10px",
-            borderRadius: "10px",
-            maxWidth: "650px",
-          }}
-        >
+          {/* REGISTER BUTTON */}
+          <div
+            style={{
+              position: "absolute",
+              top: isMobile ? "70%" : "83%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              textAlign: "center",
+              background: "white",
+              color: "#0F9766",
+              padding: "10px",
+              borderRadius: "10px",
+            }}
+          >
+            <button
+              onClick={() => navigate("/client/register")}
+              onMouseEnter={() => setIsHover(true)}
+              onMouseLeave={() => setIsHover(false)}
+              style={{
+                padding: "12px 28px",
+                background: isHover ? "#0F9766" : "white",
+                color: isHover ? "white" : "#0F9766",
+                border: "1px solid #0F9766",
+                fontWeight: "bold",
+                cursor: "pointer",
+                borderRadius: "4px",
+                transition: "all 0.3s ease",
+                width: isMobile ? "200px" : "auto",
+              }}
+            >
+              Register Now
+            </button>
+          </div>
 
-          <p style={{ marginBottom: "20px",  fontSize:"20px" }}>{slides[currentSlide].sub}</p>
         </div>
-
-
-
-         <div
-          style={{
-            position: "absolute",
-            top: "83%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            textAlign: "center",
-            background: "white",
-            color: "#0F9766",
-            padding: "10px",
-            borderRadius: "10px",
-            maxWidth: "650px",
-          }}
-        >
-
-
-
-           <button
-      onClick={() => navigate("/client/register")}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-      style={{
-        padding: "12px 28px",
-        background: isHover ? "#0F9766" : "white",
-        color: isHover ? "white" : "#0F9766",
-        border: "1px solid #0F9766",
-        fontWeight: "bold",
-        cursor: "pointer",
-        borderRadius: "4px",
-        transition: "all 0.3s ease", // smooth hover effect
-      }}
-    >
-      Register Now
-    </button>
-              </div>
-    </div>
-
       </div>
     </div>
   );
