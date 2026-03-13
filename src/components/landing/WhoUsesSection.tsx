@@ -12,7 +12,7 @@ const industries = [
 ];
 
 const clientLogos = [
-  "The Tamara Coorg", "The Legacy Mandwa", "Stone Hedge", "RARE Circle", "Aashraya On the Ganga",
+  "The Tamara Coorg", "The Legacy Mandwa", "Stone Hedge", "Bridges by RARE", "Aashraya On the Ganga",
   "The Machan", "Orah", "SAEL", "Sakhua", "FAR & BEYOND", "Symbiosis College of Arts & Commerce", "THE OASIS" ,
 ];
 
@@ -20,26 +20,34 @@ const caseStudies = [
   {
     company: "The Tamara Coorg",
     headline: "Resort-Wide Emissions Tracking",
-    summary: "Luxury resort measuring energy, water, and carbon emissions across its Coorg property, implementing sustainable operations.",
-    outcome: "25% reduction in energy use and 18% reduction in carbon footprint within the first year",
+    summary:
+      "Luxury resort measuring energy, water, and carbon emissions across its Coorg property, implementing sustainable operations.",
+    outcome:
+      "Granular visibility across 6 departments and over 500 emission factors",
   },
   {
-    company: "The Legacy Mandwa",
-    headline: "Sustainability Integration",
-    summary: "Heritage hotel integrating eco-friendly practices across hospitality and guest services, with full Scope 1-3 reporting.",
-    outcome: "Achieved industry-recognized sustainable hospitality certification",
+    company: "The Machan, Lonavala",
+    headline: "Asia’s first Carbon Neutral Resort",
+    summary:
+      "Sustainable hotel integrating eco-friendly practices across hospitality and guest services. 100% offsetting through Carbon Credits to become Carbon neutral for 3 years in a row.",
+    outcome:
+      "Widespread acclaim from media and guests",
   },
   {
-    company: "Stone Hedge",
-    headline: "Carbon Baseline & Reporting",
-    summary: "Boutique resort generating its first GRI-aligned sustainability report for investors and stakeholders.",
-    outcome: "Report completed in 5 weeks, faster than the 6-month industry average",
+    company: "Symbiosis College of Arts & Commerce",
+    headline: "Emission Measurement & United Nations Race to Zero member",
+    summary:
+      "Scope 1, 2, & 3 emissions measurement including from transport of over 3,000 students.",
+    outcome:
+      "One of the only 6 universities in India to have plan published in United Nation’s Race to Zero program.",
   },
   {
-    company: "RARE",
-    headline: "Energy & Water Efficiency",
-    summary: "Indian hospitality property optimising energy consumption and water usage with real-time monitoring tools.",
-    outcome: "18% energy savings and 12% water reduction in 12 months",
+    company: "Bridges by RARE",
+    headline: "A Carbon Neutral Travel Conference",
+    summary:
+      "One of the only travel events in the world to accurately measure its emission across 4 days of activity and 1,000+ delegates from 12 countries. Scope 1 & 2 offset with high quality CDR credits.",
+    outcome:
+      "One of the few Biochar Carbon Credit buyers from India",
   },
 ];
 
