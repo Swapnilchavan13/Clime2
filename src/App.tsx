@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound";
 import  Login  from "./pages/Login";
 import RegistrationPage from "./pages/RegistrationPage";
 import ClientRegister from "./pages/ClientRegister";
+import Myemission from "./pages/Myemission";
+
 import AgreementPage from "./pages/AgreementPage";
 
 
@@ -27,6 +29,9 @@ const App = () => (
           <Route path="/registration" element={<RegistrationPage />} /> 
           <Route path="/client/register" element={<ClientRegister />} />
           <Route path="/agreement" element={<AgreementPage />} />
+
+          <Route path="client/myemission" element={<Myemission />} />
+
 
 
           <Route path="*" element={<NotFound />} />

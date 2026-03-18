@@ -41,7 +41,7 @@ const isMobile = screenWidth <= 768;
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userId);
         alert("Login successful!");
-        navigate("/client/combinedemission");
+        navigate("/client/myemission");
       } else {
         alert("Invalid credentials");
       }
