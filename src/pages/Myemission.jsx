@@ -556,11 +556,11 @@ for (const user of users) {
 
               <td className="px-4 py-2">
                 <button
-                  onClick={() => handleShowData(userId)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg text-sm transition"
-                >
-                  Show Emission
-                </button>
+  onClick={() => handleShowData(userId)}
+  className="bg-grey-500 hover:bg-green-600 border border-green text-green px-3 py-1 rounded-lg text-sm transition"
+>
+  Show Emission
+</button>
               </td>
 
             </tr>
