@@ -478,13 +478,20 @@ for (const user of users) {
  <>
       
         {/* <ClimeLanding /> */}
-      
 
-      <div>
-     {/* <Clientnavbar logoimg={logoimg} /> */}
+     <div className="bg-white p-6 rounded-2xl shadow space-y-2">
 
-      <h2>Aggregated Data by Scope</h2>
-      <h4>Total Users: {users.length}</h4>
+  
+  {/* <Clientnavbar logoimg={logoimg} /> */}
+
+  <h2 className="text-2xl font-bold text-gray-800">
+    Aggregated Data by Scope
+  </h2>
+
+  <h4 className="text-gray-600">
+    Total Users: {users.length}
+  </h4>
+
 
   {yearWiseUserScopeData && (
   <div className="mb-4 p-4 bg-white rounded-xl shadow flex items-center gap-4">
@@ -784,30 +791,37 @@ for (const user of users) {
       Emission by Activity {selectedUserId}
     </h4>
 
-    <Pie
-      data={{
-        labels: Object.keys(
+    {/* 👇 Small chart container */}
+    <div className="w-60 h-60 mx-auto">
+  <Pie
+    data={{
+      labels: Object.keys(
+        selectedUserEmissionData.reduce((acc, item) => {
+          acc[item.selectedName] = (acc[item.selectedName] || 0) + parseFloat(item.result);
+          return acc;
+        }, {})
+      ),
+      datasets: [{
+        data: Object.values(
           selectedUserEmissionData.reduce((acc, item) => {
             acc[item.selectedName] = (acc[item.selectedName] || 0) + parseFloat(item.result);
             return acc;
           }, {})
         ),
-        datasets: [{
-          data: Object.values(
-            selectedUserEmissionData.reduce((acc, item) => {
-              acc[item.selectedName] = (acc[item.selectedName] || 0) + parseFloat(item.result);
-              return acc;
-            }, {})
-          ),
-          backgroundColor: Object.keys(
-            selectedUserEmissionData.reduce((acc, item) => {
-              acc[item.selectedName] = true;
-              return acc;
-            }, {})
-          ).map(() => `hsl(${Math.random() * 360}, 70%, 70%)`)
-        }]
-      }}
-    />
+        backgroundColor: Object.keys(
+          selectedUserEmissionData.reduce((acc, item) => {
+            acc[item.selectedName] = true;
+            return acc;
+          }, {})
+        ).map(() => `hsl(${Math.random() * 360}, 70%, 70%)`)
+      }]
+    }}
+    options={{
+      responsive: true,
+      maintainAspectRatio: false
+    }}
+  />
+</div>
 
   </div>
 )}
