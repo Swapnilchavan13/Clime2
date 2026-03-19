@@ -6,9 +6,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import  Login  from "./pages/Login";
+import  Userlogin  from "./pages/Userlogin";
+
 import RegistrationPage from "./pages/RegistrationPage";
 import ClientRegister from "./pages/ClientRegister";
 import Myemission from "./pages/Myemission";
+
+import Useremisssion from "./pages/Useremission";
+
 
 import AgreementPage from "./pages/AgreementPage";
 
@@ -26,11 +31,18 @@ const App = () => (
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="/clientlogin" element={<Login />} />      
+          <Route path="/userlogin" element={<Userlogin />} />      
+
           <Route path="/registration" element={<RegistrationPage />} /> 
           <Route path="/client/register" element={<ClientRegister />} />
           <Route path="/agreement" element={<AgreementPage />} />
 
           <Route path="client/myemission" element={<Myemission />} />
+
+          <Route path="user/useremission" element={<Useremisssion />} />
+
+
+          
 
 
 

@@ -29,9 +29,14 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-3">
           <a href="/clientlogin">
-
-          <Button variant="ghost" size="sm">Log in</Button>
+          <Button variant="ghost" size="sm">Client Log in</Button>
           </a>
+
+<a href="/userlogin">
+
+          <Button variant="ghost" size="sm">User Log in</Button>
+          </a>
+          
 
           <a href="/clientlogin">
           <Button size="sm">Start Measuring</Button>

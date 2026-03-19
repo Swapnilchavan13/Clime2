@@ -1,0 +1,200 @@
+/* Page layout */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f7fb;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: #1f2937;
+}
+
+h2 {
+  margin-top: 40px;
+  color: #374151;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Blue button */
+.btnblue {
+  background: #2563eb;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  margin: 5px;
+  font-weight: 500;
+}
+
+.btnblue:hover {
+  background: #1d4ed8;
+}
+
+/* Main container */
+.carousel-container {
+  background: #ffffff;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Carousel */
+.carousel {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Table header */
+th {
+  background: #1f2937;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Table cells */
+td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+/* Alternate row */
+tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+/* Inputs */
+input,
+select {
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 13px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* File upload button */
+input[type="file"] {
+  border: none;
+}
+
+/* Small buttons inside table */
+td button {
+  background: #10b981;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+td button:hover {
+  background: #059669;
+}
+
+/* Delete button */
+td button:last-child {
+  background: #ef4444;
+}
+
+td button:last-child:hover {
+  background: #dc2626;
+}
+
+/* Edit icon button */
+td button:has(span),
+td button:contains("✏️") {
+  background: #f59e0b;
+}
+
+td button:contains("✏️"):hover {
+  background: #d97706;
+}
+
+/* Search dropdown */
+.search-results {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  max-height: 120px;
+  overflow-y: auto;
+  width: 200px;
+  z-index: 10;
+}
+
+.search-result-item {
+  padding: 6px;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background: #f3f4f6;
+}
+
+/* Footer row */
+tfoot td {
+  background: #e5e7eb;
+  font-weight: bold;
+}
+
+/* Navigation button */
+.carousel-container > button {
+  margin-top: 15px;
+  background: #111827;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.carousel-container > button:hover {
+  background: #374151;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 6px;
+  }
+
+  input,
+  select {
+    font-size: 12px;
+  }
+}
